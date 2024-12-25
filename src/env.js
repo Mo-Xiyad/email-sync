@@ -12,6 +12,9 @@ export const env = createEnv({
       .enum(["development", "test", "production"])
       .default("development"),
     CLERK_SECRET_KEY: z.string(),
+    AURINKO_CLIENT_ID: z.string(),
+    AURINKO_CLIENT_SECRET: z.string(),
+    AURINKO_SIGNING_SECRET: z.string(),
   },
 
   /**
@@ -21,6 +24,7 @@ export const env = createEnv({
    */
   client: {
     // NEXT_PUBLIC_CLIENTVAR: z.string(),
+    NEXT_PUBLIC_URL: z.string(),
     NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY: z.string(),
     NEXT_PUBLIC_CLERK_SIGN_IN_URL: z.string(),
     NEXT_PUBLIC_CLERK_SIGN_UP_URL: z.string(),
@@ -31,6 +35,7 @@ export const env = createEnv({
    * middlewares) or client-side so we need to destruct manually.
    */
   runtimeEnv: {
+    NEXT_PUBLIC_URL: process.env.NEXT_PUBLIC_URL,
     DATABASE_URL: process.env.DATABASE_URL,
     NODE_ENV: process.env.NODE_ENV,
     NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY:
@@ -38,6 +43,9 @@ export const env = createEnv({
     CLERK_SECRET_KEY: process.env.CLERK_SECRET_KEY,
     NEXT_PUBLIC_CLERK_SIGN_IN_URL: process.env.CLERK_SECRET_KEY,
     NEXT_PUBLIC_CLERK_SIGN_UP_URL: process.env.CLERK_SECRET_KEY,
+    AURINKO_CLIENT_ID: process.env.CLERK_SECRET_KEY,
+    AURINKO_CLIENT_SECRET: process.env.CLERK_SECRET_KEY,
+    AURINKO_SIGNING_SECRET: process.env.CLERK_SECRET_KEY,
 
     // NEXT_PUBLIC_CLIENTVAR: process.env.NEXT_PUBLIC_CLIENTVAR,
   },

@@ -1,5 +1,5 @@
-import { SignOutButton } from "@clerk/nextjs";
+import AuthorizeButton from "@/components/authorize-button";
 
 export default async function Home() {
-  return <SignOutButton />;
+  return <AuthorizeButton />;
 }
