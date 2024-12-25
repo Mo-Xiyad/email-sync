@@ -1,6 +1,5 @@
 "use server";
 // import { FREE_ACCOUNTS_PER_USER, PRO_ACCOUNTS_PER_USER } from "@/app/constants";
-import { env } from "@/env";
 import { db } from "@/server/db";
 import { auth } from "@clerk/nextjs/server";
 import axios from "axios";
@@ -62,8 +61,8 @@ export const getAurinkoAccessToken = async (code: string) => {
       {},
       {
         auth: {
-          username: env.AURINKO_CLIENT_ID as string,
-          password: env.AURINKO_CLIENT_SECRET as string,
+          username: process.env.AURINKO_CLIENT_ID! as string,
+          password: process.env.AURINKO_CLIENT_SECRET! as string,
         },
       },
     );
@@ -75,6 +74,8 @@ export const getAurinkoAccessToken = async (code: string) => {
       userSession: string;
     };
   } catch (error) {
+    console.log("API =====>>>", error);
+
     if (axios.isAxiosError(error)) {
       console.error("Error fetching Aurinko token:", error.response?.data);
     } else {
