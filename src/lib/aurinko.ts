@@ -83,6 +83,7 @@ export const getAurinkoAccessToken = async (code: string) => {
   }
 };
 
+// exchanging the access token for the user info
 export const getAccountDetails = async (accessToken: string) => {
   try {
     const response = await axios.get("https://api.aurinko.io/v1/account", {

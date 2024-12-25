@@ -22,7 +22,7 @@ model User {
 
     role Role @default(user)
 
-    accounts Account[]
+    accounts Account[] // user can have multiple email accounts
 
     chatbotInteraction ChatbotInteraction?
 }
@@ -62,8 +62,8 @@ model StripeSubscription {
 }
 
 model Account {
-    id     String @id @default(cuid())
-    userId String
+    id     String @id @default(cuid()) // this is from aurinko side,  where a user cloud have multiple email accounts
+    userId String // clerk userId (our Email-sync userId)
 
     binaryIndex Json?
 
