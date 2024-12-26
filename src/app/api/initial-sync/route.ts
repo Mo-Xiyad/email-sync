@@ -21,11 +21,12 @@ export const POST = async (req: NextRequest) => {
 
   const account = new Account(dbAccount.token);
   const response = await account.performInitialSync();
+
   if (!response)
     return NextResponse.json({ error: "FAILED_TO_SYNC" }, { status: 500 });
 
   const { deltaToken, emails } = response;
-  console.log("emails ==>", emails);
+  // console.log("emails ==>", emails);
 
   await db.account.update({
     where: {

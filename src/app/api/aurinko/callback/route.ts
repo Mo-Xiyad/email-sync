@@ -28,7 +28,6 @@ export const GET = async (req: NextRequest) => {
 
   // Exchanging the code with aurinko and getting the access token
   const token = await getAurinkoAccessToken(code as string);
-  console.log("=====>>>", token);
 
   if (!token)
     return NextResponse.json(
