@@ -27,6 +27,7 @@ export const POST = async (req: NextRequest) => {
 
   const { deltaToken, emails } = response;
   // console.log("emails ==>", emails);
+  // TODO: send back the date through the trpc endpoint
 
   await db.account.update({
     where: {
