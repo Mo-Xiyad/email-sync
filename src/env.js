@@ -15,6 +15,8 @@ export const env = createEnv({
     AURINKO_CLIENT_ID: z.string(),
     AURINKO_CLIENT_SECRET: z.string(),
     AURINKO_SIGNING_SECRET: z.string(),
+    STRIPE_SECRET_KEY: z.string(),
+    STRIPE_PRICE_ID: z.string(),
   },
 
   /**
@@ -46,6 +48,8 @@ export const env = createEnv({
     AURINKO_CLIENT_ID: process.env.CLERK_SECRET_KEY,
     AURINKO_CLIENT_SECRET: process.env.CLERK_SECRET_KEY,
     AURINKO_SIGNING_SECRET: process.env.CLERK_SECRET_KEY,
+    STRIPE_SECRET_KEY: process.env.STRIPE_SECRET_KEY,
+    STRIPE_PRICE_ID: process.env.STRIPE_PRICE_ID,
 
     // NEXT_PUBLIC_CLIENTVAR: process.env.NEXT_PUBLIC_CLIENTVAR,
   },
