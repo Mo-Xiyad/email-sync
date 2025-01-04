@@ -1,6 +1,4 @@
 "use client";
-
-// import Link from "next/link"
 import type { LucideIcon } from "lucide-react";
 
 import { buttonVariants } from "@/components/ui/button";
@@ -23,7 +21,7 @@ interface NavProps {
 }
 
 export function Nav({ links, isCollapsed }: NavProps) {
-  const [_, setTab] = useLocalStorage("normalhuman-tab", "inbox");
+  const [_, setTab] = useLocalStorage("email-sync-tab", "inbox");
 
   return (
     <div
