@@ -8,7 +8,10 @@ import { useLocalStorage } from "usehooks-ts";
 type Props = { isCollapsed: boolean };
 
 const SideBar = ({ isCollapsed }: Props) => {
-  const [tab] = useLocalStorage("email-sync-tab", "inbox");
+  const [tab] = useLocalStorage<"inbox" | "sent" | "drafts">(
+    "email-sync-tab",
+    "inbox",
+  );
   const [accountId] = useLocalStorage("accountId", "");
 
   const refetchInterval = 5000;
