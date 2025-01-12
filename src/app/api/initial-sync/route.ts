@@ -21,24 +21,22 @@ export const POST = async (req: NextRequest) => {
     return NextResponse.json({ error: "ACCOUNT_NOT_FOUND" }, { status: 404 });
 
   const account = new Account(dbAccount.token);
+  //   await account.createSubscription();
   const response = await account.performInitialSync();
-
   if (!response)
     return NextResponse.json({ error: "FAILED_TO_SYNC" }, { status: 500 });
 
   const { deltaToken, emails } = response;
-  // console.log("emails ==>", emails);
-  // TODO: send back the date through the trpc endpoint
 
   await db.account.update({
     where: {
       token: dbAccount.token,
     },
     data: {
-      nextDeltaToken: deltaToken, // bookmark of the mail list
+      nextDeltaToken: deltaToken,
     },
   });
+
   await syncEmailsToDatabase(emails, accountId);
-  console.log("sync complete", deltaToken);
   return NextResponse.json({ success: true, deltaToken }, { status: 200 });
 };

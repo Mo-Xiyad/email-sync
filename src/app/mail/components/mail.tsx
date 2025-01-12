@@ -14,10 +14,13 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { cn } from "@/lib/utils";
 import { useLocalStorage } from "usehooks-ts";
 import AskAI from "./ask-ai";
+import SearchBar from "./search-bar";
 import SideBar from "./sidebar";
+import { ThreadDisplay } from "./thread-display";
+import { ThreadList } from "./thread-list";
 
 interface MailProps {
-  defaultLayout?: number[] | undefined;
+  defaultLayout: number[] | undefined;
   defaultCollapsed?: boolean;
   navCollapsedSize: number;
 }
@@ -27,7 +30,7 @@ export function Mail({
   defaultCollapsed = false,
   navCollapsedSize,
 }: MailProps) {
-  const [done, setDone] = useLocalStorage("email-sync-done", false);
+  const [done, setDone] = useLocalStorage("normalhuman-done", false);
   const [isCollapsed, setIsCollapsed] = React.useState(defaultCollapsed);
 
   return (
@@ -110,18 +113,18 @@ export function Mail({
               </TabsList>
             </div>
             <Separator />
-            {/* <SearchBar /> */}
+            <SearchBar />
             <TabsContent value="inbox" className="m-0">
-              {/* <ThreadList /> */}
+              <ThreadList />
             </TabsContent>
             <TabsContent value="done" className="m-0">
-              {/* <ThreadList /> */}
+              <ThreadList />
             </TabsContent>
           </Tabs>
         </ResizablePanel>
         <ResizableHandle withHandle />
         <ResizablePanel defaultSize={defaultLayout[2]} minSize={30}>
-          {/* <ThreadDisplay /> */}
+          <ThreadDisplay />
         </ResizablePanel>
       </ResizablePanelGroup>
     </TooltipProvider>

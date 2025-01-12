@@ -23,6 +23,7 @@ export const authoriseAccountAccess = async (
       token: true,
     },
   });
+
   if (!account) throw new Error("Invalid token");
   return account;
 };
